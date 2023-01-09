@@ -1,0 +1,36 @@
+{{define "staff/updatestaff.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>编号</td>
+            <td>姓名</td>
+            <td>年龄</td>
+            <td>男</td>
+            <td>电话号</td>
+            <td>工号</td>
+            <td>密码</td>
+        </tr>
+        <form action="/staff/updatestafffinal" method="post">
+            <td><input type="hidden" name="id" value="{{.staff.Staffid}}"/></td>
+            <td><input type="text" name="name" value="{{.staff.Name}}"/></td>
+            <td><input type="text" name="age" value="{{.staff.Age}}"/></td>
+            <td><input type="text" name="sex" value="{{.staff.Sex}}"/></td>
+            <td><input type="text" name="phone" value="{{.staff.Phone}}"/></td>
+            <td><input type="text" name="username" value="{{.staff.Username}}"/></td>
+            <td><input type="text" name="password" value="{{.staff.Password}}"/></td>
+            <td><input type="submit" value="修改" /></td>
+        </form>
+    </table> 
+    <br>
+    <a href="/admin/staffop">返回</a>
+</body>
+</html>
+{{end}}

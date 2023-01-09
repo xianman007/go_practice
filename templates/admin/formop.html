@@ -1,0 +1,72 @@
+{{define "admin/formop.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台(单号管理)</title>
+</head>
+<body>
+    <div id="main">
+        <table>
+            <tr>
+                <td>操作单号</td>
+                <td>操作员工号</td>
+                <td>商品号</td>
+                <td>数量</td>
+                <td>单价</td>
+                <td>出/入</td>
+                <td>日期</td>
+            </tr>
+        {{range $key,$value := .Formlist}}
+            <tr>
+                <td>{{$value.Formnumber}}</td>
+                <td>{{$value.Opstaffid}}</td>
+                <td>{{$value.Goodsid}}</td>
+                <td>{{$value.Amount}}</td>
+                <td>{{$value.Price}}</td>
+                <td>{{$value.Inorout}}</td>
+                <td>{{$value.Datee}}</td>
+                <td><a href="/form/deleteform?formnumber={{$value.Formnumber}}">删除</a></td>
+                <td><a href="/form/updateform?formnumber={{$value.Formnumber}}">修改</a></td>
+            </tr>
+        {{end}}
+            <form action="/form/addform" method="post">
+                <td></td>
+                <td>
+                    <select name="opstaffid">
+                        <option>请选择</option>
+                        {{range $key,$value := .Staffidname}}
+                        <option>{{$value}}</option>
+                        {{end}}
+                    </select>
+                </td>
+                <td>
+                    <select name="goodsid">
+                        <option>请选择</option>
+                        {{range $key,$value := .Goodsidname}}
+                        <option>{{$value}}</option>
+                        {{end}}
+                    </select>
+                </td>
+                <td><input type="text" name="amount"/></td>
+                <td><input type="text" name="price"/></td>
+                <td>
+                    <select name="inorout">
+                        <option>入</option>
+                        <option>出</option>
+                    </select>
+                </td>
+                <td><input type="text" name="datee"/></td>
+                <td><input type="submit" value="添加"></td>
+            </form>
+        </table>    
+    </div>
+
+    <br><br>
+    <a href="/admin">返回后台首页</a>
+
+</body>
+</html>
+{{end}}

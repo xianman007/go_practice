@@ -1,0 +1,46 @@
+{{define "admin/supplierop.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台(供应商管理)</title>
+</head>
+<body>
+    <div id="main">
+        <table>
+            <tr>
+                <td>编号</td>
+                <td>地址</td>
+                <td>名称</td>
+                <td>联系方式</td>
+                <td>联系人</td>
+            </tr>
+        {{range $key,$value := .Supplist}}
+            <tr>
+                <td>{{$value.Id}}</td>
+                <td>{{$value.Address}}</td>
+                <td>{{$value.Name}}</td>
+                <td>{{$value.Phone}}</td>
+                <td>{{$value.Head}}</td>
+                <td><a href="/supplier/deletesupplier?Supplierid={{$value.Id}}">删除</a></td>
+                <td><a href="/supplier/updatesupplier?Supplierid={{$value.Id}}">修改</a></td>
+            </tr>
+        {{end}}
+            <form action="/supplier/addsupplier" method="post">
+                <td></td>
+                <td><input type="text" name="address"/></td>
+                <td><input type="text" name="name"/></td>
+                <td><input type="text" name="phone"/></td>
+                <td><input type="text" name="head"/></td>
+                <td><input type="submit" value="添加"></td>
+            </form>
+        </table>    
+    </div>
+
+    <br><br>
+    <a href="/admin">返回后台首页</a>
+</body>
+</html>
+{{end}}

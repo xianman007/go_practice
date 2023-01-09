@@ -1,0 +1,40 @@
+{{define "goods/updategoods.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>编号</td>
+            <td>供应商编号</td>
+            <td>单价</td>
+            <td>数量</td>
+            <td>商品名</td>    
+        </tr>
+        <form action="/goods/updategoodsfinal" method="post">
+            <td><input type="hidden" name="id" value="{{.goods.Id}}"/></td>
+            <td>
+                <select name="supplierid">
+                    <option>{{.goods.Supplierid}}</option>
+                    {{range $key,$value := .Suppidname}}
+                    <option>{{$value}}</option>
+                    {{end}}
+                </select>
+            </td>
+            <td><input type="text" name="price" value = "{{.goods.Price}}"/></td>
+            <td><input type="text" name="amount" value = "{{.goods.Amount}}"/></td>
+            <td><input type="text" name="name" value = "{{.goods.Name}}"/></td>
+            <td><input type="submit" value="修改"/></td>
+        </form>
+    </table>
+    <br>
+
+    <a href="/admin/goodsop">返回</a>
+</body>
+</html>
+{{end}}

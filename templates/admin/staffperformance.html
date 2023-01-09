@@ -1,0 +1,34 @@
+{{define "/admin/staffperformance"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>员工绩效</h2>
+    <div id="main">
+        <table>
+            <tr>
+                <td>员工编号</td>
+                <td>员工姓名</td>
+                <td>操作次数</td>
+                <td>操作货物总数</td>
+            </tr>
+            {{range $key,$value := .staffperformancelist}}
+                <tr>
+                    <td>{{$value.Staffid}}</td>
+                    <td>{{$value.Staffname}}</td>
+                    <td>{{$value.Opcount}}</td>
+                    <td>{{$value.Allgoodsamount}}</td>
+                </tr>
+            {{end}}
+        </table>
+    </div>
+    <br><br>
+    <a href="/admin">返回后台首页</a>
+</body>
+</html>
+{{end}}

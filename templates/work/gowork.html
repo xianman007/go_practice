@@ -1,0 +1,52 @@
+{{define "work/gowork.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {{if eq .Nowloginuser.Status 0}}
+        您还未登录，请先<a href="/login">登录</a>
+    {{else}}
+        欢迎,<a href="/work/myopform">{{.Nowloginuser.Username}}</a>
+        <a href="/logout">注销</a>
+    {{end}}
+    <br>
+    <h4>请核对并签收货物</h4>
+    <table>
+        <tr>
+            <td>供应商</td>
+            <td>商品名</td>
+            <td>数量</td>
+            <td>单价</td>
+            <td>出/入</td>
+        </tr>
+        <form action="/work/addform" method="post">
+            <td>
+                <select name="supplierid">
+                    <option>请选择</option>
+                    {{range $key,$value := .Suppidname}}
+                    <option>{{$value}}</option>
+                    {{end}}
+                </select>
+            </td>
+            <td><input type="text" name="goodsname"/></td>
+            <td><input type="text" name="amount"/></td>
+            <td><input type="text" name="price"/></td>
+            <td>
+                <select name="inorout">
+                    <option>请选择</option>
+                    <option>出</option>
+                    <option>入</option>
+                </select>
+            </td>
+            <td><input type="submit" value="确认"/></td>
+        </form>
+    </table>
+    <a href="/login">返回</a>
+</body>
+</html>
+{{end}}

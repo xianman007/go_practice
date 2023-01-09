@@ -1,0 +1,58 @@
+{{define "admin/staffop.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台(员工管理)</title>
+</head>
+<body>
+    <div id="main">
+        <table>
+            <tr>
+                <td>编号</td>
+                <td>姓名</td>
+                <td>年龄</td>
+                <td>男</td>
+                <td>电话号</td>
+                <td>工号</td>
+                <td>密码</td>
+            </tr>
+        {{range $key,$value := .Stafflist}}
+            <tr>
+                <td>{{$value.Staffid}}</td>
+                <td>{{$value.Name}}</td>
+                <td>{{$value.Age}}</td>
+                <td>{{$value.Sex}}</td>
+                <td>{{$value.Phone}}</td>
+                <td>{{$value.Username}}</td>
+                <td>{{$value.Password}}</td>
+                <td><a href="/staff/deletestaff?staffid={{$value.Staffid}}">删除</a></td>
+                <td><a href="/staff/updatestaff?staffid={{$value.Staffid}}">修改</a></td>
+            </tr>
+        {{end}}
+            <form action="/staff/addstaff" method="post">
+                <td></td>
+                <td><input type="text" name="name"/></td>
+                <td><input type="text" name="age"/></td>
+                <td>
+                    <select name="sex">
+                        <option>男</option>
+                        <option>女</option>
+                    </select>
+                </td>
+                <td><input type="text" name="phone"/></td>
+                <td><input type="text" name="username"/></td>
+                <td><input type="text" name="password"/></td>
+                <td><input type="submit" value="添加"></td>
+            </form>
+        </table>    
+    </div>
+
+    <br><br>
+    <a href="/admin">返回后台首页</a>
+
+</body>
+</html>
+{{end}}

@@ -1,0 +1,34 @@
+{{define "supplier/updatesupplier.html"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <!-- <td>编号</td> -->
+            <td></td>
+            <td>地址</td>
+            <td>名称</td>
+            <td>联系方式</td>
+            <td>联系人</td>
+        </tr>
+        <form action="/supplier/updatesupplierfinal" method="post">
+            <td><input type="hidden" name="id" value="{{.suff.Id}}"></td>
+            <td><input type="text" name="address" value = "{{.suff.Address}}"/></td>
+            <td><input type="text" name="name" value = "{{.suff.Name}}"/></td>
+            <td><input type="text" name="phone" value = "{{.suff.Phone}}"/></td>
+            <td><input type="text" name="head" value = "{{.suff.Head}}"/></td>
+            <td><input type="submit" value="修改"></td>
+        </form>
+    </table> 
+    <br>
+
+    <a href="/admin/supplierop">返回</a>
+</body>
+</html>
+{{end}}
